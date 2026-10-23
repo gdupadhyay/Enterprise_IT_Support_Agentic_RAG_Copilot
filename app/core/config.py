@@ -1,10 +1,8 @@
 from functools import lru_cache
-from pydantic import BaseSettings
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from typing import any, Dict, List, Optional
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent[2]  # Adjust the number of parent() calls based on your project structure
+BASE_DIR = Path(__file__).resolve().parents[2]
 
 
 class Settings(BaseSettings):
@@ -33,6 +31,4 @@ class Settings(BaseSettings):
 @lru_cache()
 def get_settings() -> Settings:
     return Settings()
-
-
 
